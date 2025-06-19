@@ -1,0 +1,65 @@
+# Python
+############
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.Python/
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg
+.env/
+.venv/
+env/  # Excluye específicamente la carpeta 'env' si la usas para tu entorno virtual
+venv/ # Excluye la carpeta 'venv' si la usas para tu entorno virtual
+*.env # Archivos .env (variables de entorno)
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+instance/
+.python-version
+celerybeat-schedule
+.htpasswd
+
+# IDEs y Editores
+############
+.idea/          # Archivos de configuración de IntelliJ/PyCharm
+.vscode/        # Archivos de configuración de VS Code
+*.sublime-project
+*.sublime-workspace
+.DS_Store       # Archivos de macOS
+Thumbs.db       # Archivos de Windows
+
+# Archivos JSON
+############
+*.json          # Excluye todos los archivos .json
+
+# Archivos de configuración de Python (específicos)
+############
+# No se excluye *.py porque eso excluiría todo tu código fuente Python.
+# Si tus archivos de configuración Python tienen un patrón específico o contienen datos sensibles,
+# puedes añadirlos aquí. Ejemplos comunes:
+config.py       # Si tu archivo de configuración se llama así y tiene datos sensibles
+settings.py     # Si tu archivo de configuración principal de la app se llama así y tiene datos sensibles
+local_settings.py # Común en Django para configuraciones locales sensibles
+secrets.py      # Archivos que contienen claves API u otra información sensible
+*.ini           # Archivos de configuración INI
+*.cfg           # Archivos de configuración CFG (por ejemplo, de Celery)
+*.conf          # Archivos de configuración genéricos
+
+# Archivos de Streamlit
+*.json
+.streamlit/secrets.toml
+# Ignorar secretos de Streamlit
+Tableros/.streamlit/secrets.toml
+*.toml
