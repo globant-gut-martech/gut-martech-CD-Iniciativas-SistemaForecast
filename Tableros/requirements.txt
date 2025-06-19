@@ -1,0 +1,7 @@
+streamlit
+pandas
+plotly
+google-cloud-bigquery[all]
+google-auth
+google-auth-oauthlib
+python-dotenv
