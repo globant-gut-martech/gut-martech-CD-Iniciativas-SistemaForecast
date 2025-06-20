@@ -8,14 +8,16 @@ import json
 # ---------- AUTENTICACIÓN CON GOOGLE CLOUD ----------
 # Leer credenciales desde st.secrets
 clave_json_str = st.secrets["GCP_SERVICE_ACCOUNT"]
+repo_str = st.secrets["repositorios"]
 clave_dict = json.loads(clave_json_str)
+repo_json = json.loads(repo_str)
 credenciales = service_account.Credentials.from_service_account_info(clave_dict)
 
 # Crear cliente BigQuery
 client = bigquery.Client(credentials=credenciales, project=credenciales.project_id)
 
 st.set_page_config(page_title="Visualización de Impresiones", layout="wide")
-st.write("Autenticación exitosa usando st.secrets.")
+
 
 # ---------- FUNCIONES DE CARGA Y VISUALIZACIÓN ----------
 
@@ -27,14 +29,14 @@ def cargar_datos(query):
 
 def cargar_datos_y_visualizar(modelo_seleccionado):
     if modelo_seleccionado == "Prophet":
-        query_df = "SELECT * FROM `ga4-advance-analytics-alk-ktr.ZONE_STAGGING.SF_entrenamiento_prophet`"
+        query_df = repo_json["entrenamiento_prophet"]
         df = cargar_datos(query_df)
-        query_dp = "SELECT * FROM `ga4-advance-analytics-alk-ktr.ZONE_STAGGING.SF_prediccion_prophet`"
+        query_dp = repo_json["prediccion_prophet"]
         dp = cargar_datos(query_dp)
     else:
-        query_df = "SELECT * FROM `ga4-advance-analytics-alk-ktr.ZONE_STAGGING.SF_entrenamiento_xgboost`"
+        query_df = repo_json["entrenamiento_xgboost"]
         df = cargar_datos(query_df)
-        query_dp = "SELECT * FROM `ga4-advance-analytics-alk-ktr.ZONE_STAGGING.SF_prediccion_xgboost`"
+        query_dp = repo_json["prediccion_xgboost"]
         dp = cargar_datos(query_dp)
 
     if df.empty:
