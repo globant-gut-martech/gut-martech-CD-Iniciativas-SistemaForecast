@@ -8,7 +8,7 @@ import json
 # ---------- AUTENTICACIÓN CON GOOGLE CLOUD ----------
 # Leer credenciales desde st.secrets
 clave_json_str = st.secrets["GCP_SERVICE_ACCOUNT"]
-repo_str = st.secrets["repositorios"]
+repo_str = st.secrets["REPOSITORIOS"]
 clave_dict = json.loads(clave_json_str)
 repo_json = json.loads(repo_str)
 credenciales = service_account.Credentials.from_service_account_info(clave_dict)
